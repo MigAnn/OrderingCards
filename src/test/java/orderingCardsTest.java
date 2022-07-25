@@ -12,22 +12,24 @@ public class orderingCardsTest {
     private WebDriver driver;
 
     @BeforeAll
-    static void setUpAll(){
-        System.setProperty("webdriver.chrome.driver","/home/anna/Automator/OrderingCards/driver/linux/chromedriver");
+    static void setUpAll() {
+        System.setProperty("webdriver.chrome.driver", "/home/anna/Automator/OrderingCards/driver/linux/chromedriver");
 
     }
-@BeforeEach
-    void setUp(){
-    ChromeOptions options = new ChromeOptions();
-    options.addArguments("--disable-dev-shm-usage");
-    options.addArguments("--no-sandbox");
-    options.addArguments("--headless");
-driver = new ChromeDriver(options);
+
+    @BeforeEach
+    void setUp() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
+
     @AfterEach
-    void  tearDown(){
+    void tearDown() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
 
     @Test
@@ -37,7 +39,7 @@ driver = new ChromeDriver(options);
         driver.findElement(By.cssSelector("span[data-test-id='phone'] input")).sendKeys("+720020020");
         driver.findElement(By.cssSelector("input[class='checkbox__control']")).click();
         driver.findElement(By.cssSelector("button[role='button']")).click();
-        String text= driver.findElement(By.cssSelector("p[data-test-id='order-success'] ")).getText();
+        String text = driver.findElement(By.cssSelector("p[data-test-id='order-success'] ")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 }
