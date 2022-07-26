@@ -12,7 +12,7 @@ class orderingCardsTest {
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "/home/anna/Automator/OrderingCards/driver/linux/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "driver/linux/chromedriver");
     }
 
     @BeforeEach
