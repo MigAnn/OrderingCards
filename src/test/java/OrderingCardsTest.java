@@ -72,21 +72,12 @@ public class OrderingCardsTest {
     }
 
     @Test
-    void testEmptyFieldName() {
-//        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys();
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79012345678");
+    void testEmptyFields() {
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys();
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys();
         driver.findElement(By.cssSelector("span[class='checkbox__box']")).click();
         driver.findElement(By.cssSelector("button[role='button']")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
-        assertEquals("Поле обязательно для заполнения", text.trim());
-    }
-    @Test
-    void testEmptyFieldPhone() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Пантелеймон Пантелеймонов");
-//        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys();
-        driver.findElement(By.cssSelector("span[class='checkbox__box']")).click();
-        driver.findElement(By.cssSelector("button[role='button']")).click();
-        String text = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
         assertEquals("Поле обязательно для заполнения", text.trim());
     }
 
